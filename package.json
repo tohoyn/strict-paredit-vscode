@@ -477,6 +477,11 @@
                 "command": "deleteLeft",
                 "key": "ctrl+alt+backspace",
                 "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly"
+            },
+            {
+                "command": "paredit.transpose",
+                "key": "ctrl+alt+t",
+                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             }
         ]
     },
