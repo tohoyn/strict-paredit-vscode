@@ -57,6 +57,14 @@ function indent({ textEditor, selection }) {
         .then((applied?) => utils.undoStop(textEditor));
 }
 
+function leftChar({ textEditor, selection }) {
+    commands.executeCommand('cursorMove', { to: "left" })
+}
+
+function rightChar({ textEditor, selection }) {
+    commands.executeCommand('cursorMove', { to: "right" })
+}
+
 const wrapAround = (ast, src, start, { opening, closing }) => paredit.editor.wrapAround(ast, src, start, opening, closing);
 
 const edit = (fn, opts = {}) =>
@@ -84,8 +92,12 @@ const edit = (fn, opts = {}) =>
                         }
                     });
             }
-            else
+            else {
+                if (opts["_unlessApplied"]) {
+                    opts["_unlessApplied"]({ textEditor, selection });
+                }
                 utils.select(textEditor, res.newIndex);
+            }
     }
 
 const createNavigationCopyCutCommands = (commands) => {
@@ -129,8 +141,8 @@ const pareditCommands: [string, Function][] = [
     ['paredit.killSexpBackward', edit(paredit.editor.killSexp, { 'backward': true })],
     ['paredit.spliceSexpKillForward', edit(paredit.editor.spliceSexpKill, { 'backward': false })],
     ['paredit.spliceSexpKillBackward', edit(paredit.editor.spliceSexpKill, { 'backward': true })],
-    ['paredit.deleteForward', edit(paredit.editor.delete, { 'backward': false, '_skipIndent': true })],
-    ['paredit.deleteBackward', edit(paredit.editor.delete, { 'backward': true, '_skipIndent': true })],
+    ['paredit.deleteForward', edit(paredit.editor.delete, { 'backward': false, '_skipIndent': true, '_unlessApplied': rightChar })],
+    ['paredit.deleteBackward', edit(paredit.editor.delete, { 'backward': true, '_skipIndent': true, '_unlessApplied': leftChar })],
     ['paredit.wrapAroundParens', edit(wrapAround, { opening: '(', closing: ')' })],
     ['paredit.wrapAroundSquare', edit(wrapAround, { opening: '[', closing: ']' })],
     ['paredit.wrapAroundCurly', edit(wrapAround, { opening: '{', closing: '}' })],
