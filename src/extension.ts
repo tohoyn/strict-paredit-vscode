@@ -9,9 +9,12 @@ const languages = new Set(["clojure", "lisp", "scheme"]);
 let enabled = true,
     expandState = { range: null, prev: null };
 
-const navigate = (fn, ...args) =>
+const navigate = (fn, opts = {}) =>
     ({ textEditor, ast, selection }) => {
-        let res = fn(ast, selection.cursor, ...args);
+        let res = fn(ast, selection.cursor);
+        if (res == selection.cursor && opts["_unlessMoved"]) {
+            opts["_unlessMoved"]({ textEditor, ast, selection });
+        }
         utils.select(textEditor, res);
     }
 
@@ -105,20 +108,20 @@ const createNavigationCopyCutCommands = (commands) => {
 
     let result: [string, Function][] = new Array<[string, Function]>();
     Object.keys(commands).forEach((c) => {
-        result.push([`paredit.${c}`, navigate(commands[c])]);
-        result.push([`paredit.yank${capitalizeFirstLetter(c)}`, yank(commands[c])]);
-        result.push([`paredit.cut${capitalizeFirstLetter(c)}`, cut(commands[c])]);
+        result.push([`paredit.${c}`, navigate(commands[c][0], commands[c][1])]);
+        result.push([`paredit.yank${capitalizeFirstLetter(c)}`, yank(commands[c][0])]);
+        result.push([`paredit.cut${capitalizeFirstLetter(c)}`, cut(commands[c][0])]);
     });
     return result;
 }
 
 const navCopyCutcommands = {
-    'rangeForDefun': paredit.navigator.rangeForDefun,
-    'forwardSexp': paredit.navigator.forwardSexp,
-    'backwardSexp': paredit.navigator.backwardSexp,
-    'forwardDownSexp': paredit.navigator.forwardDownSexp,
-    'backwardUpSexp': paredit.navigator.backwardUpSexp,
-    'closeList': paredit.navigator.closeList
+    'rangeForDefun': [paredit.navigator.rangeForDefun, {}],
+    'forwardSexp': [paredit.navigator.forwardSexp, { '_unlessMoved': rightChar }],
+    'backwardSexp': [paredit.navigator.backwardSexp, { '_unlessMoved': leftChar }],
+    'forwardDownSexp': [paredit.navigator.forwardDownSexp, {}],
+    'backwardUpSexp': [paredit.navigator.backwardUpSexp, {}],
+    'closeList': [paredit.navigator.closeList, {}]
 };
 
 const pareditCommands: [string, Function][] = [
