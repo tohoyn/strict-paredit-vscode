@@ -83,8 +83,8 @@
                         "description": "The default keymap to use for bindings when there is no custom binding.",
                         "default": "strict",
                         "enum": [
-                            "original",
                             "strict",
+                            "original",
                             "none"
                         ],
                         "scope": "window"
@@ -312,7 +312,7 @@
             },
             {
                 "command": "paredit.rangeForDefun",
-                "key": "ctrl+alt+w space",
+                "key": "ctrl+alt+w",
                 "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
