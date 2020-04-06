@@ -1,11 +1,12 @@
 'use strict';
 import { StatusBar } from './status_bar';
 import * as utils from './utils';
-import { commands, window, ExtensionContext, workspace, ConfigurationChangeEvent } from 'vscode';
+import { commands, window, ExtensionContext, workspace, ConfigurationChangeEvent, } from 'vscode';
+import * as vscode from 'vscode';
 
 let paredit = require('paredit.js');
 
-const languages = new Set(["clojure", "lisp", "scheme"]);
+const languages = new Set(["commonlisp", "clojure", "lisp", "scheme"]);
 let enabled = true,
     expandState = { range: null, prev: null };
 
@@ -179,9 +180,20 @@ export function activate(context: ExtensionContext) {
 
     let statusBar = new StatusBar();
 
-    context.subscriptions.push(
+    let highlightSexp = vscode.languages.registerDocumentHighlightProvider('commonlisp', {
+        provideDocumentHighlights(document, position, token) {
+            let src = document.getText();
+            let ast = paredit.parse(src);
+            console.log(document.offsetAt(position))
+            let range = paredit.navigate.containingSexpsAt(ast, document.offsetAt(position));
+            console.log(range)
+            return [new vscode.DocumentHighlight(new vscode.Range(document.positionAt(range[0]), document.positionAt(range[1])))]
+        }
+    });
 
+    context.subscriptions.push(
         statusBar,
+        highlightSexp,
         commands.registerCommand('paredit.toggle', () => { enabled = !enabled; statusBar.enabled = enabled; }),
         window.onDidChangeActiveTextEditor((e) => statusBar.visible = e && e.document && languages.has(e.document.languageId)),
         workspace.onDidChangeConfiguration((e: ConfigurationChangeEvent) => {

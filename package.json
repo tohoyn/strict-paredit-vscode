@@ -15,6 +15,7 @@
         "Other"
     ],
     "keywords": [
+        "common lisp",
         "clojure",
         "lisp",
         "scheme",
@@ -42,6 +43,7 @@
         "url": "https://github.com/BetterThanTomorrow/calva-paredit"
     },
     "activationEvents": [
+        "onLanguage:commonlisp",
         "onLanguage:clojure",
         "onLanguage:lisp",
         "onLanguage:scheme",
@@ -288,200 +290,219 @@
             {
                 "command": "paredit.forwardSexp",
                 "key": "ctrl+right",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.backwardSexp",
                 "key": "ctrl+left",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.forwardDownSexp",
                 "key": "ctrl+down",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.backwardUpSexp",
                 "key": "ctrl+up",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.closeList",
                 "key": "ctrl+alt+right",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.rangeForDefun",
                 "key": "ctrl+alt+w",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.sexpRangeExpansion",
                 "key": "ctrl+w",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.sexpRangeContraction",
                 "key": "ctrl+shift+w",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.yankForwardSexp",
                 "key": "ctrl+alt+c ctrl+right",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.yankBackwardSexp",
                 "key": "ctrl+alt+c ctrl+left",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.yankForwardDownSexp",
                 "key": "ctrl+alt+c ctrl+down",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.yankBackwardUpSexp",
                 "key": "ctrl+alt+c ctrl+up",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.yankCloseList",
                 "key": "ctrl+alt+c ctrl+alt+right",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.yankRangeForDefun",
                 "key": "ctrl+alt+c space",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.cutForwardSexp",
                 "key": "ctrl+alt+x ccutright",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.cutBackwardSexp",
                 "key": "ctrl+alt+x ccutleft",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.cutForwardDownSexp",
                 "key": "ctrl+alt+x ccutdown",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.cutBackwardUpSexp",
                 "key": "ctrl+alt+x ccutup",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.cutCloseList",
                 "key": "ctrl+alt+x ctrl+alt+right",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.cutRangeForDefun",
                 "key": "ctrl+alt+x space",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.slurpSexpForward",
                 "key": "ctrl+alt+.",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.slurpSexpBackward",
                 "key": "ctrl+alt+shift+.",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.barfSexpForward",
                 "key": "ctrl+alt+,",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.barfSexpBackward",
                 "key": "ctrl+alt+shift+,",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.spliceSexp",
                 "key": "ctrl+alt+s",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.splitSexp",
                 "key": "ctrl+alt+shift+s",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.killSexpForward",
                 "key": "ctrl+delete",
                 "mac": "ctrl+shift+backspace",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.killSexpBackward",
                 "key": "ctrl+backspace",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.spliceSexpKillForward",
                 "key": "ctrl+alt+down",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.spliceSexpKillBackward",
                 "key": "ctrl+alt+up",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.wrapAroundParens",
                 "key": "ctrl+alt+shift+9",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.wrapAroundSquare",
                 "key": "ctrl+alt+[",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.wrapAroundCurly",
                 "key": "ctrl+alt+shift+[",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.indentRange",
                 "key": "ctrl+alt+i",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.deleteForward",
                 "key": "delete",
                 "mac": "shift+backspace",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly && !editorHasMultipleSelections"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly && !editorHasMultipleSelections"
             },
             {
                 "command": "paredit.deleteBackward",
                 "key": "backspace",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly && !editorHasMultipleSelections"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly && !editorHasMultipleSelections"
             },
             {
                 "command": "deleteRight",
                 "key": "ctrl+alt+delete",
                 "mac": "alt+shift+backspace",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "deleteLeft",
                 "key": "ctrl+alt+backspace",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.transpose",
                 "key": "ctrl+alt+t",
-                "when": "editorLangId =~ /clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+            }
+        ],
+        "languages": [
+            {
+                "id": "commonlisp",
+                "aliases": [
+                    "Common Lisp",
+                    "common lisp",
+                    "Lisp",
+                    "lisp"
+                ],
+                "extensions": [
+                    ".lisp",
+                    ".cl",
+                    ".asdf",
+                    ".asd",
+                    ".ros",
+                    ".lsp"
+                ]
             }
         ]
     },
