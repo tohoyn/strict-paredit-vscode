@@ -1,10 +1,10 @@
 {
-    "name": "paredit-revived",
-    "displayName": "Calva Paredit",
-    "description": "Clojure structural editing and navigation",
-    "version": "0.1.21",
+    "name": "strict-paredit",
+    "displayName": "Strict Paredit",
+    "description": "Classic strict paredit: structural editing and navigation",
+    "version": "0.2.0",
     "icon": "assets/paredit.png",
-    "publisher": "cospaia",
+    "publisher": "ailisp",
     "license": "MIT",
     "engines": {
         "vscode": "^1.20.0"
@@ -26,21 +26,9 @@
         "color": "#344D81",
         "theme": "dark"
     },
-    "badges": [
-        {
-            "url": "https://img.shields.io/badge/clojurians-editors-blue.svg?logo=slack",
-            "href": "https://clojurians.slack.com/messages/editors/",
-            "description": "Also find us in the #editors channel"
-        },
-        {
-            "url": "https://img.shields.io/badge/clojurians-calva--dev-blue.svg?logo=slack",
-            "href": "https://clojurians.slack.com/messages/calva-dev/",
-            "description": "Let's talk in the #calva-dev channel on the Clojurians Slack"
-        }
-    ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/BetterThanTomorrow/calva-paredit"
+        "url": "https://github.com/ailisp/strict-paredit"
     },
     "activationEvents": [
         "onLanguage:commonlisp",
@@ -81,7 +69,7 @@
                 "title": "Paredit",
                 "type": "object",
                 "properties": {
-                    "calva.paredit.defaultKeyMap": {
+                    "paredit.defaultKeyMap": {
                         "type": "string",
                         "description": "The default keymap to use for bindings when there is no custom binding.",
                         "default": "strict",
@@ -495,26 +483,6 @@
                 "command": "paredit.transpose",
                 "key": "ctrl+alt+t",
                 "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
-            }
-        ],
-        "languages": [
-            {
-                "id": "commonlisp",
-                "aliases": [
-                    "Common Lisp",
-                    "common lisp",
-                    "Lisp",
-                    "lisp"
-                ],
-                "extensions": [
-                    ".lisp",
-                    ".cl",
-                    ".asdf",
-                    ".asd",
-                    ".ros",
-                    ".lsp"
-                ],
-                "configuration": "./language-configuration.json"
             }
         ]
     },

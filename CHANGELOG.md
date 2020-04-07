@@ -1,3 +1,12 @@
+## 0.2.0
+Features:
+- fork rename to "strict paredit"
+- Strict mode map as default
+- Emacs paredit like backward and forward sexp navigation, go up when backward from first or forward from last sexp
+- Emacs paredit like delete `)` become move left or right
+- Close parens in strict mode, unbalancing via type made impossible
+- work on commonlisp mode
+
 ## 0.1.17
 Features:
 - Strict mode as default keybinding, prohibiting deletiion of matched parens and brackets

@@ -2,7 +2,6 @@
 import { StatusBar } from './status_bar';
 import * as utils from './utils';
 import { commands, window, ExtensionContext, workspace, ConfigurationChangeEvent, } from 'vscode';
-import * as vscode from 'vscode';
 
 let paredit = require('paredit.js');
 
@@ -172,7 +171,7 @@ function wrapPareditCommand(fn) {
 }
 
 function setKeyMapConf() {
-    let keyMap = workspace.getConfiguration().get('calva.paredit.defaultKeyMap');
+    let keyMap = workspace.getConfiguration().get('paredit.defaultKeyMap');
     commands.executeCommand('setContext', 'paredit:keyMap', keyMap);
 }
 setKeyMapConf();
@@ -181,26 +180,13 @@ export function activate(context: ExtensionContext) {
 
     let statusBar = new StatusBar();
 
-    // let highlightSexp = vscode.languages.registerDocumentHighlightProvider('commonlisp', {
-    //     provideDocumentHighlights(document, position, token) {
-    //         let src = document.getText();
-    //         let ast = paredit.parse(src);
-    //         let idx = document.offsetAt(position);
-    //         let sexps = paredit.walk.sexpsAt(ast, idx, (n) => n.type == 'list');
-    //         console.log(sexps)
-    //         let parentSexp = sexps[sexps.length - 1];
-    //         return [new vscode.DocumentHighlight(new vscode.Range(document.positionAt(parentSexp.start), document.positionAt(parentSexp.end)))];
-    //     }
-    // });
-
     context.subscriptions.push(
         statusBar,
-        // highlightSexp,
         commands.registerCommand('paredit.toggle', () => { enabled = !enabled; statusBar.enabled = enabled; }),
         window.onDidChangeActiveTextEditor((e) => statusBar.visible = e && e.document && languages.has(e.document.languageId)),
         workspace.onDidChangeConfiguration((e: ConfigurationChangeEvent) => {
             console.log(e);
-            if (e.affectsConfiguration('calva.paredit.defaultKeyMap')) {
+            if (e.affectsConfiguration('paredit.defaultKeyMap')) {
                 setKeyMapConf();
             }
         }),
