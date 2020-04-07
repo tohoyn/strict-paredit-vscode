@@ -122,7 +122,8 @@ const navCopyCutcommands = {
     'backwardSexp': [paredit.navigator.backwardSexp, { '_unlessMoved': leftChar }],
     'forwardDownSexp': [paredit.navigator.forwardDownSexp, {}],
     'backwardUpSexp': [paredit.navigator.backwardUpSexp, {}],
-    'closeList': [paredit.navigator.closeList, {}]
+    'closeList': [paredit.navigator.closeList, {}],
+    'closeList2': [paredit.navigator.closeList, {}]
 };
 
 const pareditCommands: [string, Function][] = [
@@ -180,20 +181,21 @@ export function activate(context: ExtensionContext) {
 
     let statusBar = new StatusBar();
 
-    let highlightSexp = vscode.languages.registerDocumentHighlightProvider('commonlisp', {
-        provideDocumentHighlights(document, position, token) {
-            let src = document.getText();
-            let ast = paredit.parse(src);
-            console.log(document.offsetAt(position))
-            let range = paredit.navigate.containingSexpsAt(ast, document.offsetAt(position));
-            console.log(range)
-            return [new vscode.DocumentHighlight(new vscode.Range(document.positionAt(range[0]), document.positionAt(range[1])))]
-        }
-    });
+    // let highlightSexp = vscode.languages.registerDocumentHighlightProvider('commonlisp', {
+    //     provideDocumentHighlights(document, position, token) {
+    //         let src = document.getText();
+    //         let ast = paredit.parse(src);
+    //         let idx = document.offsetAt(position);
+    //         let sexps = paredit.walk.sexpsAt(ast, idx, (n) => n.type == 'list');
+    //         console.log(sexps)
+    //         let parentSexp = sexps[sexps.length - 1];
+    //         return [new vscode.DocumentHighlight(new vscode.Range(document.positionAt(parentSexp.start), document.positionAt(parentSexp.end)))];
+    //     }
+    // });
 
     context.subscriptions.push(
         statusBar,
-        highlightSexp,
+        // highlightSexp,
         commands.registerCommand('paredit.toggle', () => { enabled = !enabled; statusBar.enabled = enabled; }),
         window.onDidChangeActiveTextEditor((e) => statusBar.visible = e && e.document && languages.has(e.document.languageId)),
         workspace.onDidChangeConfiguration((e: ConfigurationChangeEvent) => {
@@ -208,6 +210,5 @@ export function activate(context: ExtensionContext) {
         ...pareditCommands
             .map(([command, fn]) => commands.registerCommand(command, wrapPareditCommand(fn))));
 }
-
 export function deactivate() {
 }

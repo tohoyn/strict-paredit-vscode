@@ -54,6 +54,7 @@
         "onCommand:paredit.sexpRangeExpansion",
         "onCommand:paredit.sexpRangeContracrion",
         "onCommand:paredit.closeList",
+        "onCommand:paredit.closeList2",
         "onCommand:paredit.rangeForDefun",
         "onCommand:paredit.slurpSexpForward",
         "onCommand:paredit.slurpSexpBackward",
@@ -124,6 +125,11 @@
                 "category": "Paredit",
                 "command": "paredit.closeList",
                 "title": "Close List"
+            },
+            {
+                "category": "Paredit",
+                "command": "paredit.closeList2",
+                "title": "Go to list close in strict mode"
             },
             {
                 "category": "Paredit",
@@ -288,6 +294,11 @@
         ],
         "keybindings": [
             {
+                "command": "paredit.closeList2",
+                "key": "shift+0",
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly"
+            },
+            {
                 "command": "paredit.forwardSexp",
                 "key": "ctrl+right",
                 "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
@@ -310,7 +321,7 @@
             {
                 "command": "paredit.closeList",
                 "key": "ctrl+alt+right",
-                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap =~ /original|strict/ && editorTextFocus && !editorReadOnly"
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap == original && editorTextFocus && !editorReadOnly"
             },
             {
                 "command": "paredit.rangeForDefun",
@@ -502,7 +513,8 @@
                     ".asd",
                     ".ros",
                     ".lsp"
-                ]
+                ],
+                "configuration": "./language-configuration.json"
             }
         ]
     },
