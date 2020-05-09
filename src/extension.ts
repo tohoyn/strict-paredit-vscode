@@ -77,6 +77,15 @@ const edit = (fn, opts = {}) =>
 
         if (res)
             if (res.changes.length > 0) {
+                if (fn == paredit.editor.delete) {
+                    // Use VSCode's delete to delete indent if any
+                    if (opts['backward']) {
+                        commands.executeCommand("deleteLeft")
+                    } else {
+                        commands.executeCommand("deleteRight")
+                    }
+                    return
+                }
                 let cmd = utils.commands(res),
                     sel = {
                         start: Math.min(...cmd.map(c => c.start)),
@@ -87,12 +96,6 @@ const edit = (fn, opts = {}) =>
                     .edit(textEditor, cmd)
                     .then((applied?) => {
                         utils.select(textEditor, res.newIndex);
-                        if (!opts["_skipIndent"]) {
-                            indent({
-                                textEditor: textEditor,
-                                selection: sel
-                            });
-                        }
                     });
             }
             else {
@@ -145,8 +148,8 @@ const pareditCommands: [string, Function][] = [
     ['paredit.killSexpBackward', edit(paredit.editor.killSexp, { 'backward': true })],
     ['paredit.spliceSexpKillForward', edit(paredit.editor.spliceSexpKill, { 'backward': false })],
     ['paredit.spliceSexpKillBackward', edit(paredit.editor.spliceSexpKill, { 'backward': true })],
-    ['paredit.deleteForward', edit(paredit.editor.delete, { 'backward': false, '_skipIndent': true, '_unlessApplied': rightChar })],
-    ['paredit.deleteBackward', edit(paredit.editor.delete, { 'backward': true, '_skipIndent': true, '_unlessApplied': leftChar })],
+    ['paredit.deleteForward', edit(paredit.editor.delete, { 'backward': false, '_unlessApplied': rightChar })],
+    ['paredit.deleteBackward', edit(paredit.editor.delete, { 'backward': true, '_unlessApplied': leftChar })],
     ['paredit.wrapAroundParens', edit(wrapAround, { opening: '(', closing: ')' })],
     ['paredit.wrapAroundSquare', edit(wrapAround, { opening: '[', closing: ']' })],
     ['paredit.wrapAroundCurly', edit(wrapAround, { opening: '{', closing: '}' })],
