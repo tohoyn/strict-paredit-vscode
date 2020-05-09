@@ -138,6 +138,7 @@ const pareditCommands: [string, Function][] = [
     // (Happens in createNavigationCopyCutCommands())
 
     // EDITING
+    ['paredit.openList', edit(paredit.editor.openList)],
     ['paredit.slurpSexpForward', edit(paredit.editor.slurpSexp, { 'backward': false })],
     ['paredit.slurpSexpBackward', edit(paredit.editor.slurpSexp, { 'backward': true })],
     ['paredit.barfSexpForward', edit(paredit.editor.barfSexp, { 'backward': false })],

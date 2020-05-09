@@ -2,7 +2,7 @@
     "name": "strict-paredit",
     "displayName": "Strict Paredit",
     "description": "Classic strict paredit: structural editing and navigation",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "icon": "assets/paredit.png",
     "publisher": "ailisp",
     "license": "MIT",
@@ -35,6 +35,7 @@
         "onLanguage:clojure",
         "onLanguage:lisp",
         "onLanguage:scheme",
+        "onCommand:paredit.openList",
         "onCommand:paredit.forwardSexp",
         "onCommand:paredit.backwardSexp",
         "onCommand:paredit.forwardDownSexp",
@@ -84,6 +85,11 @@
             }
         ],
         "commands": [
+            {
+                "category": "Paredit",
+                "command": "paredit.openList",
+                "title": "Open List"
+            },
             {
                 "category": "Paredit",
                 "command": "paredit.toggle",
@@ -466,6 +472,11 @@
             {
                 "command": "paredit.deleteBackward",
                 "key": "backspace",
+                "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly && !editorHasMultipleSelections"
+            },
+            {
+                "command": "paredit.openList",
+                "key": "(",
                 "when": "editorLangId =~ /commonlisp|clojure|scheme|lisp/ && paredit:keyMap == strict && editorTextFocus && !editorReadOnly && !editorHasMultipleSelections"
             },
             {
