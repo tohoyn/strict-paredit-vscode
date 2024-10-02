@@ -68,7 +68,7 @@ export function copy(editor: TextEditor, pos: [number, number]) {
           range = new Range(pos1, pos2),
           text = editor.document.getText(range);
 
-    clipboardy.writeSync(text);
+    // clipboardy.writeSync(text);
 }
 
 
